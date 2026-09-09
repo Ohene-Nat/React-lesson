@@ -6,11 +6,10 @@ function Greeting(props) {
   );
 }
 function App() {
+  const showgreeting = true;
   return (
     <div >
-      <Greeting name="Alice" />
-      <Greeting name="Bob" />
-      <Greeting name="Charlie" />
+      {showgreeting ? <Greeting name="Alice" />: <button>CLick me</button>}
     </div>
   );
 }
