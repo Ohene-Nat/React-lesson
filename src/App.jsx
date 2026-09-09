@@ -1,4 +1,5 @@
 import "./App.css";
+import { useState } from "react";
 
 function Greeting(props) {
   return (
@@ -6,10 +7,19 @@ function Greeting(props) {
   );
 }
 function App() {
-  const showgreeting = true;
+  const [showgreeting, setShowGreeting] = useState(false);
+  function toggleGreeting() {
+    if (showgreeting) {
+      setShowGreeting(false);
+    } else {
+      setShowGreeting(true);
+    }
+    console.log(showgreeting);
+  }
   return (
     <div >
-      {showgreeting ? <Greeting name="Alice" />: <button>CLick me</button>}
+      <button onClick={toggleGreeting}>Toggle greeting</button>
+      {showgreeting && <Greeting name="Alice" />}
     </div>
   );
 }
