@@ -1,4 +1,5 @@
 import "./App.css";
+import SignUpForm from "./component/SignUpForm.jsx";
 // import { useState } from "react";
 
 // function App() {
@@ -16,29 +17,36 @@ import "./App.css";
 //   )
 // }
 
-function TodoList() {
-  const todos = [
-    { id: 1, text: "Learn React" },
-    { id: 2, text: "Build a Todo App" },
-    { id: 3, text: "Deploy the App" },
-  ];
+// function TodoList() {
+//   const todos = [
+//     { id: 1, text: "Learn React" },
+//     { id: 2, text: "Build a Todo App" },
+//     { id: 3, text: "Deploy the App" },
+//   ];
 
-  return (
-    <div>
-      <h1>Todo List</h1>
-      <ul>
-        {todos.map((todo) => (
-          <li key={todo.id}>{todo.text}</li>
-        ))}
-      </ul>
-    </div>
-  );
-}
+//   return (
+//     <div>
+//       <h1>Todo List</h1>
+//       <ul>
+//         {todos.map((todo) => (
+//           <li key={todo.id}>{todo.text}</li>
+//         ))}
+//       </ul>
+//     </div>
+//   );
+// }
 
+// function App() {
+//   return (
+//     <div className="App">
+//       <TodoList />
+//     </div>
+//   );
+// }
 function App() {
   return (
-    <div className="App">
-      <TodoList />
+    <div>
+      <SignUpForm />
     </div>
   );
 }
