@@ -1,5 +1,6 @@
 import "./App.css";
 import SignUpForm from "./component/SignUpForm.jsx";
+import { Routes, Route } from "react-router-dom";
 // import { useState } from "react";
 
 // function App() {
@@ -43,10 +44,20 @@ import SignUpForm from "./component/SignUpForm.jsx";
 //     </div>
 //   );
 // }
+function HomePage() {
+  return (
+    <div>
+      <h1>Welcome to the Home Page</h1>
+      <p>This is the home page of our React application.</p>
+    </div>
+  );
+}
 function App() {
   return (
     <div>
-      <SignUpForm />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
     </div>
   );
 }
