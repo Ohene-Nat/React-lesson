@@ -1,6 +1,7 @@
 import "./App.css";
 import SignUpForm from "./component/SignUpForm.jsx";
 import { Routes, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import { useState } from "react";
 
 // function App() {
@@ -52,11 +53,25 @@ function HomePage() {
     </div>
   );
 }
+function AboutPage() {
+  return (
+    <div>
+      <h1>About Us</h1>
+      <p>This is the about page of our React application.</p>
+    </div>
+  );
+}
 function App() {
   return (
     <div>
+      <nav style={{ display: "flex", gap: "10px", marginBottom: "10px" }}>
+        <Link to ="/">Home</Link>
+        <Link to ="/about">About</Link>
+      </nav>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
     </div>
   );
