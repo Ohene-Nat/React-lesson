@@ -45,20 +45,21 @@ import { useState } from "react";
 //     </div>
 //   );
 // }
-function Navbar(){
-  return(
+
+function Navbar() {
+  return (
     <header
-    style={{
-      padding: "1rem 1.5rem",
-      marginBottom: "1rem",
-      borderBottom: "1px solid #e5e7eb",
-      display: "flex",
-      justifyContent:"space-between",
-    }}
+      style={{
+        padding: "1rem 1.5rem",
+        marginBottom: "1rem",
+        borderBottom: "1px solid #e5e7eb",
+        display: "flex",
+        justifyContent: "space-between",
+      }}
     >
-     <nav style={{ display: "flex", gap: "10px", marginBottom: "10px" }}>
-        <Link to ="/">Home</Link>
-        <Link to ="/profile">Profile</Link>
+      <nav style={{ display: "flex", gap: "10px" }}>
+        <Link to="/">Home</Link>
+        <Link to="/profile">Profile</Link>
       </nav>
 
       <div>
@@ -67,59 +68,81 @@ function Navbar(){
     </header>
   );
 }
+
 function HomePage() {
   return (
-    <div>
+    <div style={{ padding: "0 1.5rem" }}>
       <h1>Home</h1>
-
       <p>You are not logged in. Go to the login page to sign in</p>
     </div>
   );
 }
-function LoginPage(){
-  const [name, setName] = useState("");
-  const [user, setUser] = useState({name: "", isAuth: false})
 
-  function handleSubmit(e){
+function LoginPage() {
+  const [name, setName] = useState("");
+
+  function handleSubmit(e) {
     e.preventDefault();
     if (!name.trim()) return;
-    alert("Login");
+    alert(`Logged in as ${name}`);
   }
-  return(
-    <div style={{ padding: "0 1.5rem"}}>
+
+  return (
+    <div style={{ padding: "0 1.5rem" }}>
       <h1>Login</h1>
-      <form onSubmit={handleSubmit} style={{marginTop: "1rem"}}>
-        <label htmlFor="">
+      <form onSubmit={handleSubmit} style={{ marginTop: "1rem" }}>
+        <label htmlFor="name">
           Name
-          <input type="text" placeholder="Type any Name..." value ={name} onChange={(e) => setName(e.target.value)}style={{marginLeft:"0.5rem"}}
+          <input
+            id="name"
+            type="text"
+            placeholder="Type any Name..."
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            style={{ marginLeft: "0.5rem" }}
           />
         </label>
+        <button type="submit" style={{ marginLeft: "0.5rem" }}>
+          Login
+        </button>
       </form>
-
     </div>
-  )
+  );
 }
+
 function AboutPage() {
   return (
-    <div>
+    <div style={{ padding: "0 1.5rem" }}>
       <h1>About Us</h1>
       <p>This is the about page of our React application.</p>
     </div>
   );
 }
+
+function ProfilePage() {
+  return (
+    <div style={{ padding: "0 1.5rem" }}>
+      <h1>Profile</h1>
+      <p>This is the user profile page.</p>
+    </div>
+  );
+}
+
 function App() {
   return (
     <div>
-      <Navbar></Navbar>
+      <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="*" element={<h1>404 Not Found</h1>} />
-        <Route path="/login" element={<LoginPage/>}/>
-        <Route path="/profile" element={<ProfilePage/>}/>
       </Routes>
     </div>
   );
 }
+
+
 
 export default App;
