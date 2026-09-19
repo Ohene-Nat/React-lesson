@@ -1,8 +1,9 @@
+import { useState } from "react";
 import "./App.css";
 // import SignUpForm from "./component/SignUpForm.jsx";
-import { Routes, Route } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+// import { Routes, Route } from "react-router-dom";
+// import { Link } from "react-router-dom";
+// import { useState } from "react";
 
 // function App() {
 //   const [name, setName] = useState("");
@@ -46,103 +47,122 @@ import { useState } from "react";
 //   );
 // }
 
-function Navbar() {
-  return (
-    <header
-      style={{
-        padding: "1rem 1.5rem",
-        marginBottom: "1rem",
-        borderBottom: "1px solid #e5e7eb",
-        display: "flex",
-        justifyContent: "space-between",
-      }}
-    >
-      <nav style={{ display: "flex", gap: "10px" }}>
-        <Link to="/">Home</Link>
-        <Link to="/profile">Profile</Link>
-      </nav>
+// function Navbar() {
+//   return (
+//     <header
+//       style={{
+//         padding: "1rem 1.5rem",
+//         marginBottom: "1rem",
+//         borderBottom: "1px solid #e5e7eb",
+//         display: "flex",
+//         justifyContent: "space-between",
+//       }}
+//     >
+//       <nav style={{ display: "flex", gap: "10px" }}>
+//         <Link to="/">Home</Link>
+//         <Link to="/profile">Profile</Link>
+//       </nav>
 
-      <div>
-        <Link to="/login">Login</Link>
-      </div>
-    </header>
-  );
-}
+//       <div>
+//         <Link to="/login">Login</Link>
+//       </div>
+//     </header>
+//   );
+// }
 
-function HomePage() {
-  return (
-    <div style={{ padding: "0 1.5rem" }}>
-      <h1>Home</h1>
-      <p>You are not logged in. Go to the login page to sign in</p>
-    </div>
-  );
-}
+// function HomePage() {
+//   return (
+//     <div style={{ padding: "0 1.5rem" }}>
+//       <h1>Home</h1>
+//       <p>You are not logged in. Go to the login page to sign in</p>
+//     </div>
+//   );
+// }
 
-function LoginPage() {
-  const [name, setName] = useState("");
+// function LoginPage() {
+//   const [name, setName] = useState("");
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (!name.trim()) return;
-    alert(`Logged in as ${name}`);
-  }
+//   function handleSubmit(e) {
+//     e.preventDefault();
+//     if (!name.trim()) return;
+//     alert(`Logged in as ${name}`);
+//   }
 
-  return (
-    <div style={{ padding: "0 1.5rem" }}>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit} style={{ marginTop: "1rem" }}>
-        <label htmlFor="name">
-          Name
-          <input
-            id="name"
-            type="text"
-            placeholder="Type any Name..."
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            style={{ marginLeft: "0.5rem" }}
-          />
-        </label>
-        <button type="submit" style={{ marginLeft: "0.5rem" }}>
-          Login
-        </button>
-      </form>
-    </div>
-  );
-}
+//   return (
+//     <div style={{ padding: "0 1.5rem" }}>
+//       <h1>Login</h1>
+//       <form onSubmit={handleSubmit} style={{ marginTop: "1rem" }}>
+//         <label htmlFor="name">
+//           Name
+//           <input
+//             id="name"
+//             type="text"
+//             placeholder="Type any Name..."
+//             value={name}
+//             onChange={(e) => setName(e.target.value)}
+//             style={{ marginLeft: "0.5rem" }}
+//           />
+//         </label>
+//         <button type="submit" style={{ marginLeft: "0.5rem" }}>
+//           Login
+//         </button>
+//       </form>
+//     </div>
+//   );
+// }
 
-function AboutPage() {
-  return (
-    <div style={{ padding: "0 1.5rem" }}>
-      <h1>About Us</h1>
-      <p>This is the about page of our React application.</p>
-    </div>
-  );
-}
+// function AboutPage() {
+//   return (
+//     <div style={{ padding: "0 1.5rem" }}>
+//       <h1>About Us</h1>
+//       <p>This is the about page of our React application.</p>
+//     </div>
+//   );
+// }
 
-function ProfilePage() {
-  return (
-    <div style={{ padding: "0 1.5rem" }}>
-      <h1>Profile</h1>
-      <p>This is the user profile page.</p>
-    </div>
-  );
-}
+// function ProfilePage() {
+//   return (
+//     <div style={{ padding: "0 1.5rem" }}>
+//       <h1>Profile</h1>
+//       <p>This is the user profile page.</p>
+//     </div>
+//   );
+// }
+
+// function App() {
+//   return (
+//     <div>
+//       <Navbar />
+//       <Routes>
+//         <Route path="/" element={<HomePage />} />
+//         <Route path="/about" element={<AboutPage />} />
+//         <Route path="/login" element={<LoginPage />} />
+//         <Route path="/profile" element={<ProfilePage />} />
+//         <Route path="*" element={<h1>404 Not Found</h1>} />
+//       </Routes>
+//     </div>
+//   );
+// }
 
 function App() {
+  const [showCounter, setShowCounter] = useState(false);
+
   return (
-    <div>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="*" element={<h1>404 Not Found</h1>} />
-      </Routes>
-    </div>
+    <>
+      <button onClick={() => setShowCounter(!showCounter)}>Toggle Counter</button>
+      {showCounter && (
+        <button onClick={() => setCount(count + 1)}>{count}</button>
+      )}
+    </>
   );
 }
 
+function Counter() {
+  const [count, setCount] = useState(0);
 
+  return (
+    <button onClick={() => setCount(count + 1)}>{count}</button>
+  );
+} 
 
 export default App;
